@@ -1,0 +1,73 @@
+{
+  "boutiques": [
+    {
+      "nom_boutique": "Adidas",
+      "description": "Marque mondiale de vêtements et chaussures de sport",
+      "logo": "adidas.png",
+      "email_contact": "contact@adidas.com"
+    },
+    {
+      "nom_boutique": "Nike",
+      "description": "Leader mondial des équipements sportifs",
+      "logo": "nike.png",
+      "email_contact": "contact@nike.com"
+    },
+    {
+      "nom_boutique": "Puma",
+      "description": "Marque internationale de sport et lifestyle",
+      "logo": "puma.png",
+      "email_contact": "contact@puma.com"
+    },
+    {
+      "nom_boutique": "Zara",
+      "description": "Marque de prêt-à-porter internationale",
+      "logo": "zara.png",
+      "email_contact": "contact@zara.com"
+    },
+    {
+      "nom_boutique": "H&M",
+      "description": "Mode accessible pour tous",
+      "logo": "hm.png",
+      "email_contact": "contact@hm.com"
+    }
+  ]
+}
+[
+  {
+    "boutique": "69838a3229006dee39c0ad74",
+    "categorie": "64f1aabbccddeeff00112233",
+    "nom_produit": "Chaussures Sportives Adidas",
+    "description": "Chaussures de sport confortables pour tous les jours",
+    "prix": 120,
+    "prix_promotionnel": 100,
+    "quantite_stock": 50,
+    "seuil_alerte_stock": 5,
+    "images": ["adidas1.png", "adidas2.png"],
+    "est_actif": true
+  },
+  {
+    "boutique": "69838a3229006dee39c0ad74",
+    "categorie": "64f1aabbccddeeff00112233",
+    "nom_produit": "T-shirt Adidas",
+    "description": "T-shirt léger et respirant pour sport et loisirs",
+    "prix": 35,
+    "prix_promotionnel": 30,
+    "quantite_stock": 100,
+    "seuil_alerte_stock": 10,
+    "images": ["tshirt1.png", "tshirt2.png"],
+    "est_actif": true
+  },
+  {
+    "boutique": "69838a3229006dee39c0ad74",
+    "categorie": "64f1aabbccddeeff00112233",
+    "nom_produit": "Sac à dos Adidas",
+    "description": "Sac à dos sportif avec plusieurs compartiments",
+    "prix": 80,
+    "prix_promotionnel": 70,
+    "quantite_stock": 30,
+    "seuil_alerte_stock": 3,
+    "images": ["sac1.png", "sac2.png"],
+    "est_actif": true
+  }
+]
+
