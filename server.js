@@ -28,3 +28,8 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT, () =>
   console.log(`🚀 Serveur sur http://localhost:${process.env.PORT}`)
 );
+
+  app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
