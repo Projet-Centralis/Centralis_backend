@@ -21,7 +21,6 @@ const Event = require("../models/Event");
 const Boutique = require("../models/Boutique");
 const { protect, authorize } = require("../middlewares/auth.middleware");
 const EventUser = require("../models/EventUser");
-const { protect, authorize } = require("../middlewares/auth.middleware");
 
 // Récupérer tous les events validés
 router.get("/events_valide", async (req, res) => {
