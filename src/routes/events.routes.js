@@ -24,7 +24,7 @@ const EventUser = require("../models/EventUser");
 
 // Récupérer tous les events validés
 router.get("/events_valide", async (req, res) => {
-  const events = await Event.find({ statut: "valide" });
+  const events = await Event.find({ statut: "valide" }).populate('boutique', 'nom_boutique'); 
   res.json(events);
 });
 
