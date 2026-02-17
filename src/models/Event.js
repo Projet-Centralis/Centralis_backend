@@ -27,11 +27,6 @@ module.exports = mongoose.model(
         ref: "Boutique", 
         required: true 
       },
-      user: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "User", 
-        required: true 
-      },
       titre: { 
         type: String, 
         required: true 

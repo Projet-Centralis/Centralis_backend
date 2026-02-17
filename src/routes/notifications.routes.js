@@ -3,7 +3,8 @@ const Notification = require("../models/Notification");
 const { protect } = require("../middlewares/auth.middleware");
 
 router.get("/", protect, async (req, res) => {
-  res.json(await Notification.find({ destinataire: req.user.userId }));
+  console.log("USER FROM TOKEN:", req.user);
+  res.json(await Notification.find({ destinataire: req.user._id }));
 });
 
 module.exports = router;
