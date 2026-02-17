@@ -20,6 +20,9 @@ app.use("/api/promotions", require("./src/routes/promotions.routes"));
 app.use("/api/events", require("./src/routes/events.routes"));
 app.use("/api/loyers", require("./src/routes/loyers.routes"));
 app.use("/api/notifications", require("./src/routes/notifications.routes"));
+app.use("/api/discussions", require("./src/routes/discussionForum.routes"));
+app.use("/api/commentaires", require("./src/routes/commentaireForum.routes"));
+
 
 app.get("/", (req, res) => {
   res.send("Centralis API opérationnelle 🚀");
