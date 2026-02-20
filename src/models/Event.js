@@ -45,8 +45,8 @@ module.exports = mongoose.model(
       },
       statut: { 
         type: String, 
-        enum: ["en attente", "valide", "rejete", "termine"],
-        default: "en attente"
+        enum: ["en_attente", "valide", "rejete", "termine"],
+        default: "en_attente"
       },
       capacite_max: { 
         type: Number, 
