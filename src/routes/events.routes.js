@@ -35,9 +35,12 @@ router.get("/events_valide", async (req, res) => {
 });
 
 // Récupérer tous les events
-router.get("/", async (req, res) => {
-  const events = await Event.find();
-  res.json({ success: true, data: events });
+router.get("/non_valide", async (req, res) => {
+ const events = await Event.find({ statut: "en_attente" }).populate(
+    "boutique",
+    "nom_boutique",
+  );
+  res.json(events);
 });
 
 // Créer un event (BOUTIQUE)
@@ -113,6 +116,54 @@ router.put("/:id/valider", protect, authorize("ADMIN"), async (req, res) => {
     });
   }
 });
+
+router.put("/:id/rejeter", protect, authorize("ADMIN"), async (req, res) => {
+  try {
+
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({
+        success: false,
+        message: "Événement non trouvé",
+      });
+    }
+    if (event.statut === "rejete") {
+      return res.status(400).json({
+        success: false,
+        message: "Cet événement est déjà rejeté",
+      });
+    }
+    // changer statut
+    event.statut = "rejete";
+    await event.save();
+
+    if (event.boutique) {
+      await Notification.create({
+        destinataire: event.boutique._id,
+        type_notification: "EVENT_REJETE",
+        titre: "Événement refusé ❌",
+        message: `Votre événement "${event.titre}" a été refusé par l'administration.`,
+        is_lu: false,
+      });
+    }
+
+    // =====================================================
+
+    res.json({
+      success: true,
+      message: "Événement rejeté + notification envoyée à la boutique",
+      data: event
+    });
+
+  } catch (error) {
+    console.error("Erreur rejet event:", error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
 
 // Route pour créer un événement
 router.post("/", protect, authorize("BOUTIQUE"), async (req, res) => {
