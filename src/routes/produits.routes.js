@@ -166,7 +166,7 @@ router.put("/:id", protect, authorize("BOUTIQUE"), async (req, res) => {
 });
 
 // PATCH changer statut produit
-router.patch("/:id/status", protect, authorize("BOUTIQUE"), async (req, res) => {
+router.put("/:id/status", protect, authorize("BOUTIQUE"), async (req, res) => {
   try {
     const { est_actif } = req.body;
     
