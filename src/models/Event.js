@@ -27,11 +27,6 @@ module.exports = mongoose.model(
         ref: "Boutique", 
         required: true 
       },
-      user: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "User", 
-        required: true 
-      },
       titre: { 
         type: String, 
         required: true 
@@ -50,8 +45,8 @@ module.exports = mongoose.model(
       },
       statut: { 
         type: String, 
-        enum: ["en attente", "valide", "rejete", "termine"],
-        default: "en attente"
+        enum: ["en_attente", "valide", "rejete", "termine"],
+        default: "en_attente"
       },
       capacite_max: { 
         type: Number, 
