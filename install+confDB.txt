@@ -1,0 +1,12 @@
+npm install pdfkit
+ID = centralis_db
+PASS = centralis2026
+
+CREATE CONNECTION :
+mongodb+srv://centralis_db:centralis2026@centralisdb.9vv3pte.mongodb.net/
+
+CREATE BACKUP:
+mongodump --uri="mongodb://localhost:27017" --db=centralis_db --out=backup
+
+IMPORT DATABSE : 
+mongorestore --uri="mongodb+srv://centralis_db:centralis2026@centralisdb.9vv3pte.mongodb.net" "D:\GitHub\projet-centralis\db_backup"
