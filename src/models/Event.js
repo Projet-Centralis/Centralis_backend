@@ -16,6 +16,49 @@
 //   )
 // );
 
+// const mongoose = require("mongoose");
+
+// module.exports = mongoose.model(
+//   "Event",
+//   new mongoose.Schema(
+//     {
+//       boutique: { 
+//         type: mongoose.Schema.Types.ObjectId, 
+//         ref: "Boutique", 
+//         required: true 
+//       },
+//       titre: { 
+//         type: String, 
+//         required: true 
+//       },
+//       description: { 
+//         type: String, 
+//         required: true 
+//       },
+//       date_debut: { 
+//         type: Date, 
+//         required: true 
+//       },
+//       date_fin: { 
+//         type: Date, 
+//         required: true 
+//       },
+//       statut: { 
+//         type: String, 
+//         enum: ["en_attente", "valide", "rejete", "termine"],
+//         default: "en_attente"
+//       },
+//       capacite_max: { 
+//         type: Number, 
+//         required: true,
+//         min: 1
+//       }
+//     },
+//     { timestamps: true }
+//   )
+// );
+
+
 const mongoose = require("mongoose");
 
 module.exports = mongoose.model(
@@ -25,6 +68,11 @@ module.exports = mongoose.model(
       boutique: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: "Boutique", 
+        required: true 
+      },
+      createdBy: {  // Le créateur de l'événement (gérant de la boutique)
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "User", 
         required: true 
       },
       titre: { 

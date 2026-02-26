@@ -1,0 +1,299 @@
+{
+    "users": [
+        {
+            "_id": {
+                "$oid": "698105a555af508d1edbd3d8"
+            },
+            "email": "boutique@centralis.com",
+            "password": "$2b$10$Cm66msg4uc180h90Kqhkw.g7S0gLPovSPfbcpuWN.1SoDQ/0Fhd9C",
+            "type_user": {
+                "$oid": "6980ef6985c093bd696161ae"
+            },
+            "createdAt": {
+                "$date": "2026-02-02T20:14:29.225Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-02T20:14:29.225Z"
+            },
+            "__v": 0
+        },
+        {
+            "_id": {
+                "$oid": "699aa3436a621cb9f6c531d8"
+            },
+            "email": "admin@centralis.com",
+            "password": "$2b$10$Cm66msg4uc180h90Kqhkw.g7S0gLPovSPfbcpuWN.1SoDQ/0Fhd9C",
+            "type_user": {
+                "$oid": "6980ef2d85c093bd696161ad"
+            },
+            "createdAt": {
+                "$date": "2026-02-02T20:14:29.225Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-02T20:14:29.225Z"
+            },
+            "__v": 0
+        }
+    ],
+    "typeusers": [
+        {
+            "_id": {
+                "$oid": "6980ef2d85c093bd696161ad"
+            },
+            "type_user": "ADMIN"
+        },
+        {
+            "_id": {
+                "$oid": "6980ef6985c093bd696161ae"
+            },
+            "type_user": "BOUTIQUE"
+        },
+        {
+            "_id": {
+                "$oid": "6980ef9385c093bd696161af"
+            },
+            "type_user": "ACHETEUR"
+        }
+    ],
+    "boutiques": [
+        {
+            "_id": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "user": {
+                "$oid": "698105a555af508d1edbd3d8"
+            },
+            "nom_boutique": "MASS'IN",
+            "description": "Une boutique spécialisée en produits locaux",
+            "logo": "https://example.com/logo.png",
+            "telephone": "0123456789",
+            "email_contact": "contact@masuperboutique.com",
+            "createdAt": {
+                "$date": "2026-02-02T20:20:02.167Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-02T20:20:02.167Z"
+            },
+            "__v": 0
+        }
+    ],
+    "categories": [
+        {
+            "_id": {
+                "$oid": "698c3e6c6b6256e6b121a59b"
+            },
+            "nom": "Fourniture High-tech",
+            "description": "Composants informatiques sns eh"
+        },
+        {
+            "_id": {
+                "$oid": "698c454e6b6256e6b121a59c"
+            },
+            "nom": "Chaussures",
+            "description": "kiraro"
+        }
+    ],
+    "produits": [
+        {
+            "_id": {
+                "$oid": "698c5956d61e8c945f390513"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "categorie": {
+                "$oid": "698c58a86b6256e6b121a59e"
+            },
+            "nom_produit": "RAM PORTABLE Hynix",
+            "description": "RAM 8Go DDR4 2400T",
+            "prix": 30,
+            "prix_promotionnel": 28.9,
+            "quantite_stock": 43,
+            "seuil_alerte_stock": 5,
+            "images": [],
+            "est_actif": true,
+            "createdAt": {
+                "$date": "2026-02-11T10:26:30.566Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-22T16:58:02.084Z"
+            },
+            "__v": 0
+        },
+        {
+            "_id": {
+                "$oid": "69987797e762dad61646b95c"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "categorie": {
+                "$oid": "698c58f06b6256e6b121a5a0"
+            },
+            "nom_produit": "Nike Air Jordan 1",
+            "description": "Kiraro tsotra fotsiny",
+            "prix": 50,
+            "prix_promotionnel": 48,
+            "quantite_stock": 15,
+            "seuil_alerte_stock": 10,
+            "images": [],
+            "est_actif": true,
+            "createdAt": {
+                "$date": "2026-02-20T15:02:47.695Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-22T16:52:22.289Z"
+            },
+            "__v": 0
+        }
+    ],
+    "stocks": [
+        {
+            "_id": {
+                "$oid": "6998ae97a7ba8400755c28e8"
+            },
+            "produit": {
+                "$oid": "698c5956d61e8c945f390513"
+            },
+            "emplacement": {
+                "$oid": "6998ae73a7ba8400755c28d7"
+            },
+            "quantite": 43,
+            "date_derniere_entree": {
+                "$date": "2026-02-21T07:40:13.015Z"
+            },
+            "createdAt": {
+                "$date": "2026-02-20T18:57:27.415Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-22T16:58:01.997Z"
+            },
+            "__v": 0,
+            "date_deriere_sortie": {
+                "$date": "2026-02-22T16:58:01.946Z"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "69997a9c7e827572b9b22a4e"
+            },
+            "produit": {
+                "$oid": "69987797e762dad61646b95c"
+            },
+            "emplacement": {
+                "$oid": "6998ae73a7ba8400755c28d7"
+            },
+            "quantite": 15,
+            "date_derniere_entree": {
+                "$date": "2026-02-22T11:25:04.164Z"
+            },
+            "createdAt": {
+                "$date": "2026-02-21T09:27:56.577Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-22T11:25:04.239Z"
+            },
+            "__v": 0,
+            "date_deriere_sortie": {
+                "$date": "2026-02-22T06:21:07.122Z"
+            }
+        }
+    ],
+    "event": [
+        {
+            "_id": {
+                "$oid": "6989f8a565468dfd065a77fa"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "user": {
+                "$oid": "698105a555af508d1edbd3d8"
+            },
+            "titre": "Nouvelle collection",
+            "description": "Mety",
+            "date_debut": {
+                "$date": "2026-02-10T07:00:00.000Z"
+            },
+            "date_fin": {
+                "$date": "2026-02-10T14:00:00.000Z"
+            },
+            "statut": "en attente",
+            "capacite_max": 25,
+            "createdAt": {
+                "$date": "2026-02-09T15:09:25.862Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-09T15:39:53.490Z"
+            },
+            "__v": 0
+        },
+        {
+            "_id": {
+                "$oid": "6989ffa59f87f34c2426a2f6"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "user": {
+                "$oid": "698105a555af508d1edbd3d8"
+            },
+            "titre": "Okalou",
+            "description": "Croisière symphonique sur la place",
+            "date_debut": {
+                "$date": "2026-02-10T04:30:00.000Z"
+            },
+            "date_fin": {
+                "$date": "2026-02-10T14:00:00.000Z"
+            },
+            "statut": "en attente",
+            "capacite_max": 15,
+            "createdAt": {
+                "$date": "2026-02-09T15:39:17.886Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-09T15:39:17.886Z"
+            },
+            "__v": 0
+        }
+    ],
+    "emplacementstocks": [
+        {
+            "_id": {
+                "$oid": "6998ae73a7ba8400755c28d7"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "nom_emplacement": "Entrepôt principal",
+            "description": "Stock principal pour les produits en vrac",
+            "capacite_max": 1000,
+            "createdAt": {
+                "$date": "2026-02-20T18:56:51.427Z"
+            },
+            "updatedAt": {
+                "$date": "2026-02-20T18:56:51.427Z"
+            },
+            "__v": 0
+        }
+    ],
+    "contratloyers": [
+        {
+            "_id": {
+                "$oid": "699aa6856a621cb9f6c531dc"
+            },
+            "boutique": {
+                "$oid": "698106f247d01e68821661f2"
+            },
+            "montant_mensuel": 1000,
+            "jour_echeance": 5,
+            "date_debut": {
+                "$date": "2026-02-10T07:00:00.000Z"
+            },
+            "date_fin": {
+                "$date": "2027-02-10T14:00:00.000Z"
+            },
+            "is_active": true
+        }
+    ]
+}
