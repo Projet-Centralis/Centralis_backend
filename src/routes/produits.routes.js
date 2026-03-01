@@ -59,6 +59,11 @@ router.get("/boutique", protect, authorize("BOUTIQUE"), async (req, res) => {
   }
 });
 
+// GET par boutique
+router.get("/boutique/:id", async (req, res) => {
+  res.json(await Produit.find({ boutique: req.params.id }));
+});
+
 // POST créer produit
 router.post("/", protect, authorize("BOUTIQUE"), async (req, res) => {
   try {
