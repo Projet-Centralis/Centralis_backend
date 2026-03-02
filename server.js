@@ -25,6 +25,7 @@ app.use("/api/previsions", require("./src/routes/previsions.routes"));
 app.use("/api/loyers", require("./src/routes/loyers.routes"));
 app.use("/api/commentaires", require("./src/routes/commentaireForum.routes"));
 app.use("/api/discussions", require("./src/routes/discussionForum.routes"));
+app.use("/api/stat_admin", require("./src/routes/statistiques_admin.routes"));
 
 app.get("/", (req, res) => {
   res.send("Centralis API opérationnelle 🚀");
