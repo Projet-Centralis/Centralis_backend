@@ -341,125 +341,6 @@
 // //   }
 // // });
 
-// // Ajouter un user à un event
-// router.post("/:id/register", protect, async (req, res) => {
-//   try {
-//     const eventId = req.params.id;
-//     const userId = req.userId;
-
-//     const event = await Event.findById(eventId);
-//     if (!event)
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Event non trouvé" });
-
-//     // Vérifier si la capacité est atteinte
-//     const count = await EventUser.countDocuments({ event: eventId });
-//     if (count >= event.capacite_max) {
-//       return res
-//         .status(400)
-//         .json({ success: false, message: "Capacité maximale atteinte" });
-//     }
-
-//     // Vérifier si l'utilisateur est déjà inscrit
-//     const alreadyRegistered = await EventUser.findOne({
-//       event: eventId,
-//       user: userId,
-//     });
-//     if (alreadyRegistered) {
-//       return res
-//         .status(400)
-//         .json({
-//           success: false,
-//           message: "Vous êtes déjà inscrit à cet event",
-//         });
-//     }
-
-//     const eventUser = await EventUser.create({ event: eventId, user: userId });
-
-//     res
-//       .status(201)
-//       .json({ success: true, message: "Inscription réussie", eventUser });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// });
-
-// // Lister les events d’un user
-// router.get("/my-events", protect, async (req, res) => {
-//   try {
-//     const userId = req.userId;
-//     const events = await EventUser.find({ user: userId }).populate("event");
-//     res.status(200).json({ success: true, events });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// });
-
-// // Capacité restante pour un event
-// router.get("/:id/capacite-restante", async (req, res) => {
-//   try {
-//     const eventId = req.params.id;
-//     const event = await Event.findById(eventId);
-//     if (!event)
-//       return res
-//         .status(404)
-//         .json({ success: false, message: "Event non trouvé" });
-
-//     const count = await EventUser.countDocuments({ event: eventId });
-//     const capaciteRestante = event.capacite_max - count;
-
-//     res
-//       .status(200)
-//       .json({ success: true, capacite_restante: capaciteRestante });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-//   // Route publique - événements validés
-//   router.get("/", async (req, res) => {
-//     try {
-//       const events = await Event.find({ statut: "valide" })
-//         .populate("boutique", "nom_boutique logo description")
-//         .populate("user", "email")
-//         .sort({ date_debut: 1 });
-
-//       res.json(events);
-//     } catch (error) {
-//       res.status(500).json({ message: error.message });
-//     }
-//   });
-// });
-
-// // Route pour les événements d'une boutique spécifique
-// router.get("/boutique", protect, authorize("BOUTIQUE"), async (req, res) => {
-//   try {
-//     // Trouver la boutique de l'utilisateur
-//     const boutique = await Boutique.findOne({ user: req.user.id });
-
-//     if (!boutique) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Aucune boutique trouvée pour cet utilisateur",
-//       });
-//     }
-
-//     // Récupérer les événements de cette boutique
-//     const events = await Event.find({ boutique: boutique._id })
-//       .populate("user", "email")
-//       .sort({ createdAt: -1 });
-
-//     res.json({
-//       success: true,
-//       data: events,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// });
-
 // module.exports = router;
 
 const router = require("express").Router();
@@ -1018,6 +899,127 @@ router.delete("/:id/unregister", protect, async (req, res) => {
     res.status(500).json({
       success: false,
       message: error.message
+    });
+  }
+});
+
+// ------------------------------------IFA------------------------------------
+router.get("/my-events", protect, async (req, res) => {
+  try {
+    const userId = req.userId;
+    const events = await EventUser.find({ user: userId }).populate("event");
+    res.status(200).json({ success: true, events });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+// Ajouter un user à un event
+router.post("/:id/register", protect, async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const userId = req.userId;
+
+    const event = await Event.findById(eventId);
+    if (!event)
+      return res
+        .status(404)
+        .json({ success: false, message: "Event non trouvé" });
+
+    // Vérifier si la capacité est atteinte
+    const count = await EventUser.countDocuments({ event: eventId });
+    if (count >= event.capacite_max) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Capacité maximale atteinte" });
+    }
+
+    // Vérifier si l'utilisateur est déjà inscrit
+    const alreadyRegistered = await EventUser.findOne({
+      event: eventId,
+      user: userId,
+    });
+    if (alreadyRegistered) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Vous êtes déjà inscrit à cet event",
+        });
+    }
+
+    const eventUser = await EventUser.create({ event: eventId, user: userId });
+
+    res
+      .status(201)
+      .json({ success: true, message: "Inscription réussie", eventUser });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Lister les events d’un user
+
+
+// Capacité restante pour un event
+router.get("/:id/capacite-restante", async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const event = await Event.findById(eventId);
+    if (!event)
+      return res
+        .status(404)
+        .json({ success: false, message: "Event non trouvé" });
+
+    const count = await EventUser.countDocuments({ event: eventId });
+    const capaciteRestante = event.capacite_max - count;
+
+    res
+      .status(200)
+      .json({ success: true, capacite_restante: capaciteRestante });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+  // Route publique - événements validés
+  router.get("/", async (req, res) => {
+    try {
+      const events = await Event.find({ statut: "valide" })
+        .populate("boutique", "nom_boutique logo description")
+        .populate("user", "email")
+        .sort({ date_debut: 1 });
+
+      res.json(events);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+});
+
+// Route pour les événements d'une boutique spécifique
+router.get("/boutique", protect, authorize("BOUTIQUE"), async (req, res) => {
+  try {
+    // Trouver la boutique de l'utilisateur
+    const boutique = await Boutique.findOne({ user: req.user.id });
+
+    if (!boutique) {
+      return res.status(404).json({
+        success: false,
+        message: "Aucune boutique trouvée pour cet utilisateur",
+      });
+    }
+
+    // Récupérer les événements de cette boutique
+    const events = await Event.find({ boutique: boutique._id })
+      .populate("user", "email")
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      data: events,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
     });
   }
 });
